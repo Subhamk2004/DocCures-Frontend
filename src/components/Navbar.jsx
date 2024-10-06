@@ -11,8 +11,8 @@ function Navbar() {
   let inactiveLink = 'text-textp font-semibold cursor-pointer hover:text-primary hover:bg-secondary hover:p-1 hover:rounded-lg hover:px-2 hover:text-[18px] transition-all'
 
   return (
-    <div className=' w-full p-4'>
-      <nav className=' h-20 flex flex-row items-center w-full shadow-md shadow-[#D6D6D6] rounded-3xl overflow-hidden bg-[#ffffff] justify-between pr-3'>
+    <div className=' w-full p-4 flex flex-col items-center '>
+      <nav className=' h-20 flex flex-row items-center md:w-full lg:w-[80%] shadow-md shadow-[#D6D6D6] rounded-3xl overflow-hidden bg-[#ffffff] justify-between pr-3'>
         <NavLink to='/' className='flex flex-row items-center h-full'>
           <img src={logo}
             className='lg:h-full md:h-[85%]'

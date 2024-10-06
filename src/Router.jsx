@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 function Router() {
     return (
-        <div>
+        <div className="h-[100%] ">
             <Navbar />
             <Outlet />
             <Footer />
