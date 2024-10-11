@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import AllDoctors from "./pages/AllDoctors"
 import Router from "./Router"
+import Signup from "./pages/Signup"
 
 function App() {
 
@@ -23,6 +24,14 @@ function App() {
         {
           path: 'allDoctors',
           element: <AllDoctors />,
+        },
+        {
+          path: 'allDoctors/:speciality',
+          element: <AllDoctors />
+        },
+        {
+          path: 'signup',
+          element: <Signup />
         }
       ]
     }

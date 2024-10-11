@@ -3,18 +3,35 @@ import useDoctorList from '../hooks/useDoctorList';
 import IncomponentLoading from './IncomponentLoading';
 import DoctorProfile from './DoctorProfile';
 import { Link } from 'react-router-dom';
+import AlertDisplay from './AlertDisplay';
+import { useNavigate } from 'react-router-dom';
 
-function DocList() {
+function DocList({
+  isHomePage = false,
+  speciality
+}) {
 
   let [showWarning, setShowWarning] = useState(false)
   let { doctorList, isLoading, error } = useDoctorList();
+  let navigate = useNavigate();
+
+  if (doctorList === undefined) {
+    return <AlertDisplay alertType='error' alertMessage='Error fetching the doctors' />
+  }
+
+  if (isHomePage) {
+    if (doctorList.length > 1)
+      doctorList = doctorList.slice(0, 10)
+  }
+  let filteredDoctorList = doctorList;
+  if (speciality !== undefined) {
+    filteredDoctorList = doctorList.filter((doctor) => doctor.speciality === speciality);
+  }
 
   return (
-    <div className='w-full p-4'>
-      <div className='w-full bg-softGray rounded-3xl flex flex-col items-center overflow-hidden no-scrollbar'>
-        <div className='h-[20%] w-full flex flex-col items-center'>
-        </div>
-        <div className='h-[80%] w-full items-center flex flex-col gap-5 p-4'>
+    <div className='w-full flex flex-col items-center'>
+      <div className='lg:w-[90%] bg-softGray rounded-3xl flex flex-col items-center overflow-hidden no-scrollbar'>
+        <div className='h-[80%] w-full items-center flex flex-col'>
           {
             isLoading ?
               <IncomponentLoading />
@@ -22,12 +39,18 @@ function DocList() {
               null
           }
           <DoctorProfile
-            doctorList={doctorList}
-            isHomePage={true}
+            doctorList={filteredDoctorList}
+            isHomePage={isHomePage}
           />
-          <Link to='/allDoctors' className='bg-darkGray text-black px-4 py-2 rounded-full text-md font-semibold hover:bg-primary-dark transition-colors duration-300'>
-            View All Doctors
-          </Link>
+          {
+            isHomePage ?
+              <Link to='/allDoctors' className='bg-darkGray text-textp px-4 py-2 mt-8 mb-12 rounded-full  hover:bg-[gray] hover:text-white transition-colors duration-300 '>
+                View All Doctors
+              </Link>
+              :
+              null
+          }
+
         </div>
       </div>
     </div>

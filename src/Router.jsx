@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 function Router() {
     return (
-        <div className="h-[100%] ">
+        <div className="flex flex-col items-center">
             <Navbar />
             <Outlet />
             <Footer />

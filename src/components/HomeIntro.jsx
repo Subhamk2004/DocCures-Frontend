@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 function HomeIntro() {
     return (
         <div className='w-full p-4 flex flex-col items-center'>
-            <div className='w-[90%] lg:w-[80%] min-h-[400px] lg:min-h-[550px] bg-primary rounded-2xl flex flex-row items-center overflow-hidden gap-5 relative'>
-                <div className='lg:w-[50%] w-[55%] p-12 ml-5 py-6 flex flex-col'>
+            <div className='w-[90%] lg:w-[80%] h-[500px] md:h-[450px] lg:h-[600px] min-h-[500px] lg:min-h-[550px] bg-primary rounded-2xl flex flex-row items-center overflow-hidden gap-5 relative'>
+                <div className='lg:w-[50%] w-[65%] p-12 ml-5 py-6 flex flex-col'>
                     <h1 className='font-bold lg:leading-[45px] text-white text-4xl lg:text-[40px]'>
                         Schedule Appointment with Trusted Physicians
                     </h1>
