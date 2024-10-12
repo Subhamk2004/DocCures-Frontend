@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import useAuth from '../hooks/useAuth'
 import serverError from '../assets/animations/serverError.webm'
 import warning from '../assets/images/warning.png'
 import close from '../assets/images/close.png'
@@ -7,8 +8,9 @@ import warningAnime from '../assets/animations/warning.webm'
 import { useSelector } from 'react-redux'
 
 function AlertDisplay({
-    alertMessage = 'Something went wrong, try refreshing the page', alertType = 'error', error = false
+    alertMessage = 'Something went wrong, try refreshing the page', alertType = 'error', displayAlert = false
 }) {
+    const { error } = useAuth();
 
     let startStyle = 'transition-all h-full w-[5px]';
     let stopStyle = 'transition-all duration-[4500ms] ease-in w-[5px] h-[0px]'
@@ -20,7 +22,7 @@ function AlertDisplay({
     const videoRef = useRef(null);
 
     useEffect(() => {
-
+        
         setAlertStyle(alertBoxShowStyle)
         setStyle(startStyle);
         setAlertIndicator(alertType)
@@ -38,7 +40,7 @@ function AlertDisplay({
             videoRef.current.playbackRate = 0.5;
         }
         console.log('Hey');
-    }, [alertType])
+    }, [alertType, displayAlert])
 
 
 
@@ -65,7 +67,7 @@ function AlertDisplay({
         )
     }
     return (
-        <div className='p-3 flex flex-row justify-center'>
+        <div className='p-3  flex flex-row justify-center'>
             {
                 alertIndicator === "success" ?
                     <div className='min-w-[250px] flex flex-col max-w-[350px] relative '>

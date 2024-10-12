@@ -5,6 +5,8 @@ import About from "./pages/About"
 import AllDoctors from "./pages/AllDoctors"
 import Router from "./Router"
 import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import Profile from "./pages/Profile"
 
 function App() {
 
@@ -32,6 +34,14 @@ function App() {
         {
           path: 'signup',
           element: <Signup />
+        },
+        {
+          path: 'login',
+          element: <Login />
+        },
+        {
+          path: 'profile',
+          element: <Profile />
         }
       ]
     }

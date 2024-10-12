@@ -1,11 +1,15 @@
 import React from 'react'
 import logo from '../assets/images/logo.png'
-import logoFull from '../assets/images/logofull.png'
+import user from '../assets/images/user.png'
 import create from '../assets/images/create.png'
 import login from '../assets/images/login.png'
 import { Link, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
+  let { isAuthenticated } = useSelector(state => state.user);
+
+
   let activeLink = 'text-primary font-bold cursor-pointer bg-white hover:text-primary hover:bg-secondary hover:p-1 hover:rounded-lg hover:px-2 hover:text-[20px] transition-all'
 
   let inactiveLink = 'text-textp font-semibold cursor-pointer hover:text-primary hover:bg-secondary hover:p-1 hover:rounded-lg hover:px-2 hover:text-[18px] transition-all'
@@ -50,16 +54,27 @@ function Navbar() {
             Contact
           </NavLink>
         </ul>
-        <div className='flex flex-row items-center gap-2 lg:gap-3'>
-          <NavLink to='/signup' className="p-2 bg-primary rounded-2xl px-2 lg:px-4 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
-            Sign up
-            <img src={create} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
-          </NavLink>
-          <NavLink to='/login' className="p-2 bg-primary rounded-2xl px-2 lg:px-4 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
-            Login
-            <img src={login} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
-          </NavLink>
-        </div>
+        {
+          isAuthenticated ?
+            <div>
+              <NavLink to='/profile' className="p-2 bg-primary rounded-2xl px-4 lg:px-5 lg:py-3 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
+                Profile
+                <img src={user} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
+              </NavLink>
+            </div>
+            :
+            <div className='flex flex-row items-center gap-2 lg:gap-3'>
+              <NavLink to='/signup' className="p-2 bg-primary rounded-2xl px-2 lg:px-4 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
+                Sign up
+                <img src={create} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
+              </NavLink>
+              <NavLink to='/login' className="p-2 bg-primary rounded-2xl px-2 lg:px-4 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
+                Login
+                <img src={login} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
+              </NavLink>
+            </div>
+        }
+
       </nav>
     </div>
   )

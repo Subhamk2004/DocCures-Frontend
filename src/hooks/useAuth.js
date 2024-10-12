@@ -29,7 +29,7 @@ function useAuth() {
       console.log('Auth status response:', data);
       setAuthData(data);
 
-      if (data.isAuthenticated) {
+      if (data.auth) {
         dispatch(authenticate(data));
       }
     } catch (error) {
