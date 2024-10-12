@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Mail, Phone, MapPinCheck, Edit, LogOut, Trash } from 'lucide-react';
-import Verified from '../assets/images/verified.png';
+import RandomColorGenerator from '../utils/RandomColorGenerator.mjs';
 import { appointments } from '../constants/appointments.mjs';
 import AppointmentList from '../components/AppointmentList';
 import ConfirmAlert from '../components/ConfirmAlert';
 import { logoutUser } from "../reduxSlices/UserSlice.mjs";
 import Loading from '../components/Loading';
+import { Link } from 'react-router-dom';
+import ProfilePreview from '../components/ProfilePreview';
+import AlertDisplay from '../components/AlertDisplay';
 
 function Profile() {
     const { name, email, phone, address, image } = useSelector(state => state.user);
@@ -14,23 +17,9 @@ function Profile() {
     const appointment = appointments;
     const dispatch = useDispatch();
     let [isLoading, setIsLoading] = useState(false);
-
-
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-
-    function RandomColorGenerator() {
-        let color = ''
-
-        for (let i = 0; i < 3; i++) {
-            let sub = Math.floor(Math.random() * 256).toString(16)
-            color += (sub.length === 1 ? '0' + sub : sub)
-        }
-        console.log(color);
-
-        return color
-    }
-
+    let [isDeleted, setIsDeleted] = useState(null);
     let color = RandomColorGenerator();
 
     const handleLogoutConfirm = async (confirmed) => {
@@ -55,23 +44,44 @@ function Profile() {
         }
         setShowLogoutConfirm(false);
     };
-    console.log(image);
 
     const handleDeleteConfirm = async (confirmed) => {
+
         if (confirmed) {
+            console.log('Deleting account', email);
+
             try {
-                const response = await fetch(`${serverUrl}/delete-account`, {
+                setIsLoading(true);
+                let response = await fetch(`${serverUrl}/user/delete`, {
                     method: 'DELETE',
-                    credentials: 'include'
-                });
-                if (response.ok) {
-                    dispatch(logoutUser()); // Assuming this also clears user data
-                    // Redirect to home page or show a message
-                } else {
-                    console.error('Account deletion failed');
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials:'include',
+                    body: JSON.stringify({ email: email })
+                })
+
+                let data = await response.json();
+                console.log(data);
+                if (data.isDeleted) {
+                    setIsDeleted(true)
+                    setTimeout(() => {
+                        setIsDeleted(null)
+                    }, 7000)
+                    dispatch(logoutUser());
                 }
+                else {
+                    setIsDeleted(false)
+                    setTimeout(() => {
+                        setIsDeleted(null)
+                    }, 12000)
+                }
+
             } catch (error) {
                 console.error('Error during account deletion:', error);
+            }
+            finally {
+                setIsLoading(false);
             }
         }
         setShowDeleteConfirm(false);
@@ -98,73 +108,34 @@ function Profile() {
                         confirm={handleDeleteConfirm}
                     />
                 )}
-                <div className='flex flex-row gap-7 items-center'>
-                    <div className='p-1 border-4 border-primary rounded-full relative'>
-                        <div className='w-[150px] h-[150px] flex flex-col rounded-full overflow-hidden items-center justify-center'>
-                            {
-                                image === "null" ?
-                                    <div className="w-full h-[150px] bg-white flex justify-center items-center">
-                                        <div
-                                            className=' opacity-45'
-                                            style={{
-                                                backgroundColor: `#${color}`,
-                                                width: '150px',
-                                                height: '150px',
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                flexDirection: 'row',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                            }}
-                                        >
-                                        </div>
-                                        <p className='absolute text-3xl font-semibold'>
-                                            {name[0].toUpperCase()}
-                                        </p>
-                                    </div>
-                                    :
-                                    (
-                                        <img
-                                            src={image}
-                                            alt={`Dr. ${name}`}
-                                            className="w-[97%] h-52 object-cover object-top rounded-2xl"
-                                        />
-                                    )
-                            }
-                        </div>
-                        <img src={Verified} className='bg-white p-1 rounded-full w-[45px] absolute bottom-0 right-0' alt="Verified" />
-                    </div>
-                    <div className='flex flex-col items-start gap-3'>
-                        <h1 className='text-[33px] font-semibold flex flex-row gap-2'>
-                            Welcome,
-                            <span className='text-primary font-bold'>
-                                {name}
-                            </span>
-                        </h1>
-                        <div className='flex flex-row items-center gap-2'>
-                            <Phone className='w-[22px] h-[22px]' />
-                            <p className='text-xl font-semibold text-primary'>{phone}</p>
-                        </div>
-                        <div className='flex flex-row items-center gap-2'>
-                            <Mail className='w-[22px] h-[22px]' />
-                            <p className='text-xl font-semibold text-primary'>{email}</p>
-                        </div>
-                        <div className='flex flex-row items-center gap-2'>
-                            <MapPinCheck className='w-[22px] h-[22px]' />
-                            <p className='text-xl font-semibold text-primary'>{address}</p>
-                        </div>
-                    </div>
-                </div>
+                {
+                    isDeleted &&
+                    <AlertDisplay alertType='success' alertMessage='User Deleted successfully' />
+                }
+                {
+                    isDeleted === false &&
+                    <AlertDisplay alertType='error' alertMessage="Can't delete user right now, please try again!" />
+                }
+
+                <ProfilePreview
+                    name={name}
+                    email={email}
+                    phone={phone}
+                    address={address}
+                    image={image}
+                    color={color}
+                />
+
                 <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-5' />
                 <div className='mt-6 w-[95%] flex flex-col items-center'>
                     <h2 className='text-2xl font-semibold'>Your Appointments</h2>
                     <AppointmentList appointment={appointment} />
                 </div>
                 <div className='w-[95%] py-6 px-3 bg-secondary rounded-2xl shadow-md shadow-darkGray flex flex-row justify-around gap-3'>
-                    <button className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
+                    <Link to="/editProfile" className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
                         Edit Profile
                         <Edit className='w-6' />
-                    </button>
+                    </Link>
                     <button
                         className='px-5 p-3 flex flex-row items-center gap-2 bg-[#4d4d4d] rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2e2e2e]'
                         onClick={() => setShowLogoutConfirm(true)}

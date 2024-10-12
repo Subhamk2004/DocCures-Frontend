@@ -46,7 +46,7 @@ function AlertDisplay({
 
     if (error) {
         return (
-            <div className='w-screen h-screen absolute inset-0 bg-white flex flex-col items-center justify-center gap-5'>
+            <div className='w-screen h-screen fixed z-20 inset-0 bg-white flex flex-col items-center justify-center gap-5'>
                 <h1 className='text-4xl font-extrabold text-textp flex flex-row gap-2'>
                     Sorry <span className='text-[#ec174d]'> Error </span>  from the Server  Side !!!!
                 </h1>
@@ -67,7 +67,7 @@ function AlertDisplay({
         )
     }
     return (
-        <div className='p-3  flex flex-row justify-center'>
+        <div className='p-3  flex flex-row justify-center fixed z-30'>
             {
                 alertIndicator === "success" ?
                     <div className='min-w-[250px] flex flex-col max-w-[350px] relative '>

@@ -7,6 +7,7 @@ import Router from "./Router"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
+import EditProfile from "./pages/EditProfile"
 
 function App() {
 
@@ -42,6 +43,10 @@ function App() {
         {
           path: 'profile',
           element: <Profile />
+        },
+        {
+          path: 'editProfile',
+          element: <EditProfile />
         }
       ]
     }

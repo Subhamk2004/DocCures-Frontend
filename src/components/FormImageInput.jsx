@@ -7,6 +7,8 @@ function FormImageInput({
   onChange,
   previewImage
 }) {
+
+  
   return (
     <div className='flex flex-col w-full gap-1'>
       <label htmlFor={labelFor} className='text-xl font-semibold'>
@@ -21,9 +23,9 @@ function FormImageInput({
         className='w-full p-2 border border-primary rounded-lg'
       />
       {previewImage && (
-        <img 
-          src={previewImage} 
-          alt="Preview" 
+        <img
+          src={previewImage}
+          alt="Preview"
           className='mt-2 max-w-full h-40 object-cover rounded-lg'
         />
       )}
