@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Mail, Phone, MapPinCheck, Edit, LogOut, Trash } from 'lucide-react';
+import { Edit, LogOut, Trash } from 'lucide-react';
 import RandomColorGenerator from '../utils/RandomColorGenerator.mjs';
-import { appointments } from '../constants/appointments.mjs';
-import AppointmentList from '../components/AppointmentList';
 import ConfirmAlert from '../components/ConfirmAlert';
 import { logoutUser } from "../reduxSlices/UserSlice.mjs";
 import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import ProfilePreview from '../components/ProfilePreview';
 import AlertDisplay from '../components/AlertDisplay';
+import UpcomingAppointmentList from '../components/upcomingAppointments';
+import PreviousAppointmentList from '../components/PreviousAppointments';
+import useAppointments from '../hooks/useAppointments.mjs';
+import IncomponentLoading from '../components/IncomponentLoading';
+import { clearAppointments } from '../reduxSlices/AppointmentSlice.mjs';
+
 
 function Profile() {
     const { name, email, phone, address, image } = useSelector(state => state.user);
     const serverUrl = import.meta.env.VITE_DOCCURES_SERVER_URL;
-    const appointment = appointments;
+    let { appointments, isLoading: loadingBookings, error: bookingError } = useAppointments();
     const dispatch = useDispatch();
     let [isLoading, setIsLoading] = useState(false);
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -31,6 +35,7 @@ function Profile() {
                     credentials: 'include'
                 });
                 if (response.ok) {
+                    dispatch(clearAppointments());
                     dispatch(logoutUser());
                 } else {
                     console.error('Logout failed');
@@ -57,7 +62,7 @@ function Profile() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    credentials:'include',
+                    credentials: 'include',
                     body: JSON.stringify({ email: email })
                 })
 
@@ -127,10 +132,22 @@ function Profile() {
                 />
 
                 <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-5' />
-                <div className='mt-6 w-[95%] flex flex-col items-center'>
-                    <h2 className='text-2xl font-semibold'>Your Appointments</h2>
-                    <AppointmentList appointment={appointment} />
+                <h2 className='text-2xl font-semibold mt-5'>Your Appointments</h2>
+
+                <div className='mt-6 w-[95%] flex flex-row gap-8 items-center'>
+                    {
+                        loadingBookings ? <IncomponentLoading /> :
+                            <>
+                                <UpcomingAppointmentList page={'profile'} />
+                                <PreviousAppointmentList page={'profile'} />
+                            </>
+                    }
+
                 </div>
+                <Link to='/allAppointments' className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl w-[250px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
+                    All Appointments
+                </Link>
+                <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-5' />
                 <div className='w-[95%] py-6 px-3 bg-secondary rounded-2xl shadow-md shadow-darkGray flex flex-row justify-around gap-3'>
                     <Link to="/editProfile" className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
                         Edit Profile

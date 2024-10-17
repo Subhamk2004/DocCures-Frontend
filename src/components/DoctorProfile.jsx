@@ -2,6 +2,7 @@ import React from 'react';
 import { User, Star, Edit,  Calendar } from 'lucide-react';
 import verified from '../assets/images/verified.png'
 import AlertDisplay from './AlertDisplay';
+import { Link } from 'react-router-dom';
 
 function DoctorProfile({ doctorList, isHomePage }) {
 
@@ -49,10 +50,10 @@ function DoctorProfile({ doctorList, isHomePage }) {
                             }
                         </div>
                         <div className="flex items-center justify-between w-full">
-                            <button className="w-full flex items-center px-3 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-[#0000ffb6] duration-300 gap-2">
+                            <Link to={`/bookAppointment/${doctor._id}`} className="w-full flex items-center px-3 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-[#0000ffb6] duration-300 gap-2">
                                 <Calendar className='text-white w-[20px] h-[20px]' size={20}/>
                                 Book Appointment
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

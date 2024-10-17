@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ConfirmAlert from '../components/ConfirmAlert';
 import RandomColorGenerator from '../utils/RandomColorGenerator.mjs';
 import FormInput from '../components/FormInput';
 import FormImageInput from '../components/FormImageInput';

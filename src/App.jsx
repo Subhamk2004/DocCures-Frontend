@@ -8,6 +8,8 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
 import EditProfile from "./pages/EditProfile"
+import LoadDoctor from "./pages/LoadDoctor"
+import AllAppointments from "./pages/AllAppointments"
 
 function App() {
 
@@ -47,6 +49,14 @@ function App() {
         {
           path: 'editProfile',
           element: <EditProfile />
+        },
+        {
+          path: 'bookAppointment/:id',
+          element: <LoadDoctor />
+        },
+        {
+          path:'allAppointments',
+          element: <AllAppointments />
         }
       ]
     }
