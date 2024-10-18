@@ -9,11 +9,11 @@ function Footer() {
       <div className="w-[80%] footer-content flex flex-col md:flex-row justify-between gap-10 md:gap-4 pt-6">
         <div className='flex flex-col md:w-[40%] gap-4 '>
           <img src={logofull} alt="Logo" className="footer-logo w-[110px]" />
-          <p className='text-textp text-justify md:ml-4'>
+          <p className='text-textp text-sm md:text-base text-justify md:ml-4'>
             DocCures makes healthcare simple by connecting you with trusted doctors for easy, fast appointment scheduling. Whether you need routine care or specialist advice, our platform ensures expert care is always within reach. With a seamless, user-friendly experience, managing your health has never been more convenient.
           </p>
         </div>
-        <div className='flex flex-col md:w-[30%] md:items-center'>
+        <div className='flex flex-col md:w-[30%] md:items-center  text-sm md:text-base '>
           <h2 className='text-2xl font-semibold'>
             Company
           </h2>
@@ -23,7 +23,7 @@ function Footer() {
             <Link>Contact us</Link>
           </ul>
         </div>
-        <div className='flex flex-col md:w-[30%] md:items-center'>
+        <div className='flex flex-col md:w-[30%] md:items-center  text-sm md:text-base '>
           <h2 className='text-2xl font-semibold'>
             Support
           </h2>

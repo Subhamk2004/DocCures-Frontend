@@ -113,7 +113,7 @@ function SmNavbar({
                             </div>
                             {
                                 isAuthenticated ?
-                                    <div className='flex flex-col gap-4 mb-10'>
+                                    <div className='flex flex-col gap-4 mb-16'>
                                         <NavLink to='/emergency' className="p-2 bg-white rounded-2xl px-4 py-3 text-black shadow-md shadow-darkGray font-semibold  flex flex-row gap-2 justify-between items-center hover:bg-[#f3e5e5]">
                                             Emergency
                                             <img src={emergency} className='h-[24px]' />
@@ -124,7 +124,7 @@ function SmNavbar({
                                         </NavLink>
                                     </div>
                                     :
-                                    <div className='flex flex-col mb-10 items-center gap-4 lg:gap-3'>
+                                    <div className='flex flex-col mb-16 items-center gap-4 lg:gap-3'>
                                         <NavLink to='/signup' className=" bg-primary rounded-2xl px-4 justify-between py-3 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c] w-full">
                                             Sign up
                                             <img src={create} className='h-[24px]' />
