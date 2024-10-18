@@ -20,6 +20,16 @@ function Emergency() {
     let [alertMessage, setAlert] = useState('');
     let [alertType, setAlertType] = useState('');
     const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
+    const [show, setShow] = useState(true);
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         if (userId) {
@@ -89,6 +99,9 @@ function Emergency() {
 
 
     const searchEmergencyDoctors = () => {
+        if (windowWidth < 768) {
+            setShow(false);
+        }
         socket.emit('searchEmergencyDoctors');
     };
 
@@ -139,7 +152,7 @@ function Emergency() {
     };
 
     return (
-        <div className='lg:w-[80%] w-full h-[73vh] p-4 flex flex-row items-center justify-center '>
+        <div className='lg:w-[80%] w-full h-[82vh] md:h-[73vh] p-4 flex flex-row items-center justify-center '>
             {
                 alertMessage ?
                     <AlertDisplay alertMessage={alertMessage} alertType={alertType} />
@@ -147,61 +160,64 @@ function Emergency() {
                     null
             }
             {
-                <AlertDisplay alertMessage="Please don't press back or refresh the page while conversation is going on! Chances of permanent connection loss" alertType='warning'/>
+                <AlertDisplay alertMessage="Please don't press back or refresh the page while conversation is going on! Chances of permanent connection loss" alertType='warning' />
             }
-            <div className=' mt-16 w-full h-full bg-white rounded-3xl flex flex-row relative overflow-hidden shadow-md shadow-darkGray justify-around'>
+            <div className=' mt-16 w-full h-full bg-white rounded-3xl flex flex-row relative overflow-hidden shadow-md shadow-darkGray justify-around items-center'>
                 <img src={room} className='absolute w-full h-full object-cover rounded-3xl opacity-55' />
 
                 {
                     !emergencyRoom ? <>
-                        <div className=' z-10 w-[60%] lg:w-auto h-full bg-transparent p-4 rounded-3xl flex flex-row items-center overflow-scroll no-scrollbar '>
-                            <div className='bg-[#f6faff] rounded-3xl w-full h-full flex flex-col items-center justify-between p-4 sm:p-6 shadow-lg shadow-[gray] overflow-y-auto no-scrollbar'>
-                                <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 sm:mt-5 text-center'>
-                                    Emergency <span className='text-primary'>Assistance</span>
-                                </h1>
+                        {
+                            show &&
+                            <div className=' z-10 md:w-[60%] lg:w-auto h-full bg-transparent p-4 rounded-3xl flex flex-row items-center overflow-scroll no-scrollbar '>
+                                <div className='bg-[#f6faff] rounded-3xl w-full h-full flex flex-col items-center justify-between p-4 sm:p-6 shadow-lg shadow-[gray] overflow-y-auto no-scrollbar'>
+                                    <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 sm:mt-5 text-center'>
+                                        Emergency <span className='text-primary'>Assistance</span>
+                                    </h1>
 
-                                <div className='w-full max-w-2xl mt-6 sm:mt-8 space-y-4 sm:space-y-6'>
-                                    <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
-                                        <Clock className='text-primary flex-shrink-0 mt-[6px]' size={20} />
-                                        <p className='text-base lg:text-lg xl:text-xl xl:font-semibold text-gray-700'>
-                                            Our emergency assistance service is available 24/7. Please click the button below to search for emergency doctors.
-                                        </p>
+                                    <div className='w-full max-w-2xl mt-6 sm:mt-8 space-y-4 sm:space-y-6'>
+                                        <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
+                                            <Clock className='text-primary flex-shrink-0 mt-[6px]' size={20} />
+                                            <p className='text-base lg:text-lg xl:text-xl xl:font-semibold text-gray-700'>
+                                                Our emergency assistance service is available 24/7. Please click the button below to search for emergency doctors.
+                                            </p>
+                                        </div>
+
+                                        <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
+                                            <DollarSign className='text-primary flex-shrink-0 mt-[6px]' size={20} />
+                                            <p className='text-base lg:text-lg xl:text-xl xl:font-semibold text-gray-700'>
+                                                Emergency service doesn't charge any upfront fee. You can request assistance anytime, but you'll need to pay for the service after the consultation.
+                                            </p>
+                                        </div>
+
+                                        <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
+                                            <AlertTriangle className='text-yellow-500 flex-shrink-0 mt-[6px]' size={20} />
+                                            <p className='font-semibold text-base lg:text-lg xl:text-xl xl:font-bold text-gray-700'>
+                                                Note! This is an emergency service and should only be used in case of an emergency.
+                                            </p>
+                                        </div>
+
+                                        <div className='bg-red-50 rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
+                                            <ShieldAlert className='text-red-500 flex-shrink-0' size={20} />
+                                            <p className='text-base lg:text-lg xl:text-xl xl:font-semibold  text-red-700'>
+                                                If this is found not to be an emergency case, your account will be suspended and you will be charged the fees for doctor consultation on your next usage.
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
-                                        <DollarSign className='text-primary flex-shrink-0 mt-[6px]' size={20} />
-                                        <p className='text-base lg:text-lg xl:text-xl xl:font-semibold text-gray-700'>
-                                            Emergency service doesn't charge any upfront fee. You can request assistance anytime, but you'll need to pay for the service after the consultation.
-                                        </p>
-                                    </div>
-
-                                    <div className='bg-white rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
-                                        <AlertTriangle className='text-yellow-500 flex-shrink-0 mt-[6px]' size={20} />
-                                        <p className='font-semibold text-base lg:text-lg xl:text-xl xl:font-bold text-gray-700'>
-                                            Note! This is an emergency service and should only be used in case of an emergency.
-                                        </p>
-                                    </div>
-
-                                    <div className='bg-red-50 rounded-xl p-3 sm:p-4 shadow-md flex items-start space-x-3 sm:space-x-4'>
-                                        <ShieldAlert className='text-red-500 flex-shrink-0' size={20} />
-                                        <p className='text-base lg:text-lg xl:text-xl xl:font-semibold  text-red-700'>
-                                            If this is found not to be an emergency case, your account will be suspended and you will be charged the fees for doctor consultation on your next usage.
-                                        </p>
-                                    </div>
+                                    <button
+                                        className='w-full sm:w-auto p-3 px-5 sm:px-7 text-base sm:text-xl font-semibold mt-6 sm:mt-10 rounded-2xl text-white bg-primary hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
+                                        onClick={searchEmergencyDoctors}
+                                    >
+                                        Search for Emergency Doctors
+                                    </button>
                                 </div>
 
-                                <button
-                                    className='w-full sm:w-auto p-3 px-5 sm:px-7 text-lg sm:text-xl font-semibold mt-6 sm:mt-10 rounded-2xl text-white bg-primary hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2'
-                                    onClick={searchEmergencyDoctors}
-                                >
-                                    Search for Emergency Doctors
-                                </button>
+
                             </div>
-
-
-                        </div>
+                        }
                         {
-                            availableDoctors.length > 0 && <div className='w-[40%] h-full bg-white z-10 bg-transparent p-4 rounded-3xl flex flex-col items-center overflow-scroll no-scrollbar'>
+                            availableDoctors.length > 0 && <div className='md:w-[40%] h-[90%] md:h-full bg-white z-10 bg-transparent p-4 rounded-3xl flex flex-col items-center overflow-scroll no-scrollbar'>
                                 <div className='bg-[#f6faff]  h-full w-full flex flex-col p-3 sm:p-4 rounded-3xl shadow-md items-center overflow-scroll no-scrollbar'>
                                     {availableDoctors.length > 0 && (
                                         <div className="mt-6 w-full flex flex-col items-center">
@@ -255,7 +271,7 @@ function Emergency() {
                     </>
                         :
                         <div className='h-full w-full bg-transaparent flex items-center justify-center z-10 p-3 py-7 '>
-                            <div className='max-w-[800px] w-[80%] h-full bg-white rounded-3xl p-4 flex justify-center overflow-scroll no-scrollbar'>
+                            <div className='max-w-[800px] md:w-[80%] h-full bg-white rounded-3xl p-4 flex justify-center overflow-scroll no-scrollbar'>
                                 <div className="mt-8 w-full h-full flex flex-col items-center">
                                     <h2 className="text-2xl font-bold mb-4 text-gray-800">Emergency Chat</h2>
                                     <div className="w-full h-[70%]">
@@ -280,7 +296,7 @@ function Emergency() {
                                                 type="text"
                                                 value={newMessage}
                                                 onChange={(e) => setNewMessage(e.target.value)}
-                                                className="flex-grow p-2 border rounded-l-lg focus:outline-none outline-none hover:border-primary"
+                                                className="w-[190px] md:w-auto flex-grow p-2 border rounded-l-lg focus:outline-none outline-none hover:border-primary"
                                                 placeholder="Type your message..."
                                             />
                                             <button
