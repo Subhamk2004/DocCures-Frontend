@@ -23,9 +23,9 @@ function ProfilePreview({
     }
 
     return (
-        <div className='flex flex-row gap-7 items-start'>
-            <div className='p-1 border-4 border-primary rounded-full relative'>
-                <div className='w-[150px] h-[150px] flex flex-col rounded-full overflow-hidden items-center justify-center'>
+        <div className='flex flex-col md:flex-row gap-7 items-start'>
+            <div className='p-1 border-[3px] md:border-4 border-primary rounded-full relative'>
+                <div className='w-[120px] md:w-[150px] h-[120px] md:h-[150px] flex flex-col rounded-full overflow-hidden items-center justify-center'>
                     {
                         isLocalImage ?
                             <img
@@ -68,19 +68,19 @@ function ProfilePreview({
                             </>
                     }
                 </div>
-                <img src={Verified} className='bg-white p-1 rounded-full w-[45px] absolute bottom-0 right-0' alt="Verified" />
+                <img src={Verified} className='bg-white p-1 rounded-full w-[39px] md:w-[45px] absolute bottom-0 right-0' alt="Verified" />
             </div>
             <div className='flex flex-col items-start gap-3'>
                 {
                     !degree ?
-                        <h1 className='text-[33px] font-semibold flex flex-row gap-2'>
+                        <h1 className='text-[22px] md:text-[33px] font-semibold flex flex-row gap-2'>
                             Welcome,
                             <span className='text-primary font-bold'>
                                 {name}
                             </span>
                         </h1>
                         :
-                        <h1 className='text-[33px] font-semibold flex flex-row gap-2'>
+                        <h1 className='text-[22px] md:text-[33px] font-semibold flex flex-row gap-2'>
                             <span className='text-textp font-bold'>
                                 Dr. {name}
                             </span>
@@ -107,16 +107,16 @@ function ProfilePreview({
 
 
                 <div className='flex flex-row items-start gap-2'>
-                    <Phone className='w-[22px] h-[22px] mt-1' />
-                    <p className='text-xl font-semibold text-primary'>{phone}</p>
+                    <Phone className='w-[18px] h-[18px] md:w-[22px] md:h-[22px] mt-1' />
+                    <p className='md:text-xl font-semibold text-primary'>{phone}</p>
                 </div>
                 <div className='flex flex-row items-start gap-2'>
-                    <Mail className='w-[22px] h-[22px] mt-1' />
-                    <p className='text-xl font-semibold text-primary'>{email}</p>
+                    <Mail className='w-[18px] h-[18px] md:w-[22px] md:h-[22px] mt-1' />
+                    <p className='md:text-xl font-semibold text-primary'>{email}</p>
                 </div>
                 <div className='flex flex-row items-start gap-2'>
                     <MapPinCheck className='w-[22px] h-[22px] mt-1' />
-                    <p className='text-xl font-semibold text-primary'>{address}</p>
+                    <p className='md:text-xl font-semibold text-primary'>{address}</p>
                 </div>
                 {
                     degree &&
