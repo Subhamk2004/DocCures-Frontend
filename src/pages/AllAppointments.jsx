@@ -17,7 +17,7 @@ function AllAppointments() {
     }
 
     return (
-        <div className='w-[95%] lg:w-[75%] p-5 flex flex-row gap-6'>
+        <div className='w-[95%] lg:w-[75%] p-5 flex flex-col md:flex-row gap-6'>
             <UpcomingAppointmentList />
             <PreviousAppointmentList />
         </div>

@@ -103,9 +103,9 @@ function EditProfile() {
                     previewImage={user.image}
                     color={color}
                 />
-                <div className='w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
+                <div className='md:w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
                     <form
-                        className='w-full h-auto bg-white rounded-3xl flex flex-col items-start p-6 px-9 shadow-md shadow-darkGray gap-7 mb-4'
+                        className='w-full h-auto bg-white rounded-3xl flex flex-col items-start p-6 px-9 md:shadow-md shadow-darkGray gap-7 mb-4'
                         onSubmit={handleSubmit}
                     >
                         <div className='w-full h-auto flex flex-col gap-7'>
@@ -145,7 +145,7 @@ function EditProfile() {
                             />
                         </div>
                         <button
-                            className='p-3 w-full rounded-2xl text-2xl font-bold text-white bg-primary hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
+                            className='p-3 w-full rounded-2xl text-xl md:text-2xl font-bold text-white bg-primary hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
                             type='submit'
                             disabled={isLoading}
                         >
