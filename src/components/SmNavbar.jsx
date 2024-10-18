@@ -50,7 +50,7 @@ function SmNavbar({
                             <Menu className='z-20 cursor-pointer text-primary' size={35} />
                         </button>
                         :
-                        <div className='flex flex-col h-screen justify-between right-0 top-0 gap-4 w-[220px] bg-softGray px-4 py-4 rounded-2xl absolute '>
+                        <div className='flex flex-col h-screen justify-between right-0 top-0 gap-4 w-[220px] bg-softGray shadow-xl px-4 py-4 rounded-2xl absolute '>
                             <div className='flex flex-col gap-4'>
                                 <div className='w-full flex flex-row justify-end'>
                                     <X className='cursor-pointer text-textp hover:text-primary' size={25} onClick={() => setShowMenu(!showMenu)} />

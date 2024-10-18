@@ -96,10 +96,10 @@ function Signup() {
 
     return (
         <div className='h-screen flex flex-col items-center justify-center w-full'>
-            <h1 className='text-3xl lg:text-4xl font-bold'>
+            <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mt-5'>
                 Welcome to <span className='text-primary'>DocCures</span>
             </h1>
-            <p className='text-textp'>Your Trusted Healthcare Companion</p>
+            <p className='text-textp text-sm md:text-base'>Your Trusted Healthcare Companion</p>
             {showWarning && <AlertDisplay alertType='error' alertMessage={error} />}
             {showSuccess && (
                 <AlertDisplay 
@@ -107,7 +107,7 @@ function Signup() {
                     alertMessage='User Registered successfully, now please Login to continue using the services' 
                 />
             )}
-            <div className='w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
+            <div className='w-[92%] md:w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
                 <form 
                     className='w-full h-auto bg-white rounded-3xl flex flex-col items-start p-6 px-9 shadow-md shadow-darkGray gap-7 mb-4'
                     onSubmit={handleSubmit}
@@ -167,7 +167,7 @@ function Signup() {
                         />
                     </div>
                     <button 
-                        className='p-3 w-full rounded-2xl text-2xl font-bold text-white bg-primary hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
+                        className='p-3 w-full rounded-2xl text-xl md:text-2xl font-bold text-white bg-primary hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
                         type='submit'
                         disabled={isLoading}
                     >

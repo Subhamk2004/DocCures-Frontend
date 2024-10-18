@@ -91,8 +91,8 @@ function Login() {
     }
 
     return (
-        <div className='h-screen flex flex-col items-center justify-center w-full'>
-            <h1 className=' text-3xl  lg:text-4xl font-bold'>
+        <div className='h-[80vh] md:h-screen flex flex-col items-center justify-center w-full'>
+            <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold'>
                 {
                     showWarning ?
                         <AlertDisplay alertType='warning' alertMessage="Please Login to continue using the services" />
@@ -112,8 +112,8 @@ function Login() {
                         null
                 }
                 Welcome to <span className='text-primary'>DocCures</span></h1>
-            <p className='text-textp '>Your Trusted Healthcare Companion</p>
-            <div className='w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
+            <p className='text-textp text-sm md:text-base'>Your Trusted Healthcare Companion</p>
+            <div className='w-[93%] md:w-[80%] max-w-[900px] h-auto mt-10 overflow-scroll no-scrollbar'>
                 <form className='w-full h-auto bg-white rounded-3xl flex flex-col items-start p-6 px-9 shadow-md shadow-darkGray gap-7 mb-4'
                     onSubmit={handleSubmit}
                 >
@@ -145,7 +145,7 @@ function Login() {
                                 <IncomponentLoading isShort={true} />
                             </button>
                             :
-                            <button className='p-3 bg-primary w-full rounded-2xl text-2xl font-bold text-white hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
+                            <button className='p-3 bg-primary w-full rounded-2xl text-xl md:text-2xl font-bold text-white hover:bg-[#0000ffc0] hover:shadow-md hover:shadow-[#5c6e9e]'
                                 type='submit'
                             >
                                 Login
