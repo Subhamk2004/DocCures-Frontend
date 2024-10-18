@@ -157,9 +157,9 @@ function BookAppointment({ user: fetchedUser }) {
                 />
             </div>
             <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-12' />
-            <div className="w-[85%] flex flex-col justify-center items-center mb-5 mt-10 h-[30%]">
+            <div className="md:w-[85%] flex flex-col justify-center items-center mb-5 mt-10 h-[30%]">
                 <h2 className="text-2xl font-bold mb-4 text-textp ">Appointment Booking</h2>
-                <div className="flex flex-col gap-6 mt-5 items-center">
+                <div className="flex flex-col gap-6 mt-5 md:items-center">
                     <div className="flex flex-col items-start">
                         <h3 className="text-lg font-semibold mb-2 text-textp">Select Date</h3>
                         <DatePicker
@@ -169,9 +169,9 @@ function BookAppointment({ user: fetchedUser }) {
                             className="p-2 border rounded-xl outline-none border-primary text-textp"
                         />
                     </div>
-                    <div className="flex flex-col items-start">
+                    <div className=" flex flex-col items-start">
                         <h3 className="text-lg font-semibold mb-2 text-textp">Select Time</h3>
-                        <div className="flex flex-row gap-3 flex-wrap">
+                        <div className="flex flex-row gap-3 flex-wrap justify-center">
                             {timeSlots.map((time) => (
                                 <button
                                     key={time}

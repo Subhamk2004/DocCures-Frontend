@@ -80,7 +80,7 @@ function ProfilePreview({
                             </span>
                         </h1>
                         :
-                        <h1 className='text-[22px] md:text-[33px] font-semibold flex flex-row gap-2'>
+                        <h1 className='text-[21px] md:text-[33px] font-semibold flex flex-row gap-2'>
                             <span className='text-textp font-bold'>
                                 Dr. {name}
                             </span>
@@ -91,7 +91,7 @@ function ProfilePreview({
                                             <div className='w-[10px] h-[10px] rounded-full bg-[#2ec92e]'>
                                             </div>
                                         </div>
-                                        <p className='text-lg font-semibold text-[green]'>Available</p>
+                                        <p className='text-base md:text-lg font-semibold text-[green]'>Available</p>
                                     </div>
                                     :
                                     <div className='flex flex-row  items-center gap-2'>
@@ -99,7 +99,7 @@ function ProfilePreview({
                                             <div className='w-[10px] h-[10px] rounded-full bg-[#dd4444]'>
                                             </div>
                                         </div>
-                                        <p className='text-lg font-semibold text-[red]'>Unavailable</p>
+                                        <p className='text-base md:text-lg font-semibold text-[red]'>Unavailable</p>
                                     </div>
                             }
                         </h1>
@@ -123,19 +123,19 @@ function ProfilePreview({
                     <div className='flex flex-col gap-3'>
                         <div className='flex flex-row items-start gap-2'>
                             <UserCheck className='w-[22px] h-[22px] mt-1' />
-                            <p className='text-xl font-semibold text-primary'>{speciality}</p>
+                            <p className='tmd:text-xl font-semibold text-primary'>{speciality}</p>
                         </div>
                         <div className='flex flex-row items-start gap-2'>
-                            <Star className='w-[22px] h-[22px] mt-1' />
-                            <p className='text-xl font-semibold text-primary'>{experience} years of experience</p>
+                            <Star className='w-[18px] h-[18px] md:w-[22px] md:h-[22px] mt-1' />
+                            <p className='md:text-xl font-semibold text-primary'>{experience} years of experience</p>
                         </div>
                         <div className='flex flex-row items-start gap-2'>
-                            <Book className='w-[22px] h-[22px] mt-1' />
-                            <p className='text-xl font-semibold text-primary'>Highest degree in {degree}</p>
+                            <Book className='w-[18px] h-[18px] md:w-[22px] md:h-[22px] mt-1' />
+                            <p className='md:text-xl font-semibold text-primary'>Highest degree in {degree}</p>
                         </div>
                         <div className='flex flex-row items-start gap-2'>
-                            <IndianRupee className='w-[22px] h-[22px] mt-1' />
-                            <p className='text-xl font-semibold text-[#17a317]'>Appointment fee ₹{fees}</p>
+                            <IndianRupee className='w-[18px] h-[18px] md:w-[22px] md:h-[22px] mt-1' />
+                            <p className='md:text-xl font-semibold text-[#17a317]'>Appointment fee ₹{fees}</p>
                         </div>
                     </div>
                 }

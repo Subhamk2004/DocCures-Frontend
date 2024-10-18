@@ -26,7 +26,7 @@ function DocList({
   }
   if(isMobile) {
     if(doctorList.length > 1)
-      doctorList = doctorList.slice(0, 3)
+      doctorList = doctorList.slice(0, 4)
   }
   let filteredDoctorList = doctorList;
   if (speciality !== undefined) {
