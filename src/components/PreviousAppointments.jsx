@@ -55,7 +55,7 @@ const PreviousAppointmentList = ({ page = 'bookings' }) => {
                                         :
                                         <div className='w-full flex flex-row justify-between items-center'>
                                             <p className='text-lg font-semibold text-[#c92626]'>₹{booking.fee}</p>
-                                            <span className='text-sm text-textp'>*Your amount has been refunded</span>
+                                            <span className='text-xs md:text-sm text-textp'>*Your amount has been refunded</span>
                                         </div>
                                 }
                             </div>

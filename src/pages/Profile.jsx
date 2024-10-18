@@ -148,20 +148,20 @@ function Profile() {
                     All Appointments
                 </Link>
                 <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-5' />
-                <div className='w-[95%] py-6 px-3 bg-secondary rounded-2xl shadow-md shadow-darkGray flex flex-row justify-around gap-3'>
-                    <Link to="/editProfile" className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
+                <div className='w-[95%] py-6 px-3 bg-secondary rounded-2xl shadow-md shadow-darkGray flex flex-col md:flex-row justify-around gap-3'>
+                    <Link to="/editProfile" className='px-5 p-3 flex flex-row items-center gap-2 bg-primary rounded-xl md:w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2929ff]'>
                         Edit Profile
                         <Edit className='w-6' />
                     </Link>
                     <button
-                        className='px-5 p-3 flex flex-row items-center gap-2 bg-[#4d4d4d] rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2e2e2e]'
+                        className='px-5 p-3 flex flex-row items-center gap-2 bg-[#4d4d4d] rounded-xl md:w-[200px] justify-center text-white text-lg font-semibold hover:bg-[#2e2e2e]'
                         onClick={() => setShowLogoutConfirm(true)}
                     >
                         Logout
                         <LogOut className='w-6' />
                     </button>
                     <button
-                        className='px-5 p-3 flex flex-row items-center gap-2 bg-[#ec3333] rounded-xl w-[200px] justify-center text-white text-lg font-semibold hover:bg-[red]'
+                        className='px-5 p-3 flex flex-row items-center gap-2 bg-[#ec3333] rounded-xl md:w-[200px] justify-center text-white text-lg font-semibold hover:bg-[red]'
                         onClick={() => setShowDeleteConfirm(true)}
                     >
                         Delete Account
