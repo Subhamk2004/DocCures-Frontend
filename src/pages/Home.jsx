@@ -20,7 +20,7 @@ function Home() {
 
   let [showChatBot, setShowChatBot] = useState(false);
   return (
-    <div className='w-full h-full p-4 flex flex-col items-center overflow-scroll relative'>
+    <div className='w-full h-full p-2 md:p-4 flex flex-col items-center overflow-scroll relative'>
       <HomeIntro windowWidth={windowWidth} />
 
       <div className="z-10 fixed right-3 bottom-12 md:right-12 shadow-lg shadow-[gray] rounded-full group cursor-pointer flex justify-center items-center">
@@ -60,10 +60,10 @@ function Home() {
           Top Doctors to Book
         </h2>
         {
-          windowWidth > 768 ? 
-          <DocList isHomePage={true} isMobile={false} />
-          :
-          <DocList isHomePage={true} isMobile={true} />
+          windowWidth > 768 ?
+            <DocList isHomePage={true} isMobile={false} />
+            :
+            <DocList isHomePage={true} isMobile={true} />
         }
       </div>
 

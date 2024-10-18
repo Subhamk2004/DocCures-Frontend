@@ -12,7 +12,7 @@ function DoctorProfile({ doctorList, isHomePage, isMobile }) {
     }
 
     return (
-        <div className="w-full border flex flex-row flex-wrap items-center justify-center gap-5 md:gap-6 py-6 no-scrollbar">
+        <div className="w-full flex flex-row flex-wrap items-center justify-center gap-5 md:gap-6 py-6 no-scrollbar">
             {doctorList.map((doctor) => (
                 <div key={doctor._id} className="bg-white rounded-2xl shadow-md shadow-darkGray overflow-hidden transition-all duration-300 w-[160px] md:w-[270px] hover:-translate-y-2 hover:shadow-xl">
                     <div className="relative flex justify-center">
