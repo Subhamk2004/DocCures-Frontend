@@ -35,7 +35,7 @@ function DocList({
 
   return (
     <div className='w-full flex flex-col items-center'>
-      <div className='lg:w-[90%] bg-softGray rounded-3xl flex flex-col items-center overflow-hidden no-scrollbar'>
+      <div className='w-full lg:w-[90%] bg-softGray rounded-3xl flex flex-col items-center overflow-hidden no-scrollbar'>
         <div className='h-[80%] w-full items-center flex flex-col'>
           {
             isLoading ?

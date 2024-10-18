@@ -64,7 +64,7 @@ function AllDoctors() {
             </NavLink>
           </ul>
         </div>
-        <div className='w-[70%] overflow-visible no-scrollbar'>
+        <div className='md:w-[70%] overflow-visible no-scrollbar'>
           <DocList isHomePage={false} speciality={speciality} />
         </div>
       </div>
