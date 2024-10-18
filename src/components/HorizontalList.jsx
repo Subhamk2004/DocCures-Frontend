@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 function HorizontalList() {
     return (
-        <div className='flex flex-row items-center mt-6 gap-6'>
+        <div className='flex flex-row items-center mt-6 gap-6 overflow-scroll md:overflow-auto w-[330px] sm:w-auto no-scrollbar'>
             <Link to="/allDoctors/genralDoc">
                 <button className='flex flex-col items-center'>
                     <img src={General} className='w-[80px] lg:w-[100px]' />
@@ -21,7 +21,7 @@ function HorizontalList() {
                     <p className='text-sm lg:text-lg'>Gynecologist</p>
                 </button>
             </Link>
-            <Link to="/allDoctors/skin">
+            <Link to="/allDoctors/Dermatologist">
                 <button className='flex flex-col items-center'>
                     <img src={skin} className='w-[80px] lg:w-[100px]' />
                     <p className='text-sm lg:text-lg'>Dermatologist</p>

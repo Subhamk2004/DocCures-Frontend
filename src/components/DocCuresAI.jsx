@@ -66,7 +66,7 @@ function DocCuresAI() {
                     return (
                         <div className='w-full flex flex-col items-start gap-[5px] text-textp p-4 rounded-2xl bg-softGray shadow-md shadow-darkGray'>
                             <p className='text-primary font-semibold'># {promptArray[index]}</p>
-                            <p className='text-textp mt-5'>
+                            <p className='text-textp text-sm md:text-base mt-5'>
                                 {result}
                             </p>
                         </div>

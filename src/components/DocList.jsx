@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 function DocList({
   isHomePage = false,
-  speciality
+  speciality,
+  isMobile = false
 }) {
 
   let [showWarning, setShowWarning] = useState(false)
@@ -22,6 +23,10 @@ function DocList({
   if (isHomePage) {
     if (doctorList.length > 1)
       doctorList = doctorList.slice(0, 10)
+  }
+  if(isMobile) {
+    if(doctorList.length > 1)
+      doctorList = doctorList.slice(0, 3)
   }
   let filteredDoctorList = doctorList;
   if (speciality !== undefined) {
