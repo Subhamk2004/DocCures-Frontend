@@ -34,7 +34,7 @@ function Home() {
         <button onClick={() => {
           setShowChatBot(!showChatBot)
         }}>
-          <img src={Ai} alt="AI Assistant" className="rounded-full w-[65px]" />
+          <img src={Ai} alt="AI Assistant" className="rounded-full w-[50px] md:w-[65px]" />
         </button>
       </div>
       {

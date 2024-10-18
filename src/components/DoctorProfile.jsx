@@ -4,7 +4,7 @@ import verified from '../assets/images/verified.png'
 import AlertDisplay from './AlertDisplay';
 import { Link } from 'react-router-dom';
 
-function DoctorProfile({ doctorList, isHomePage }) {
+function DoctorProfile({ doctorList, isHomePage, isMobile }) {
 
     console.log(isHomePage);
     if (doctorList === undefined) {
@@ -25,24 +25,24 @@ function DoctorProfile({ doctorList, isHomePage }) {
 
                     <div className="p-4">
                         <div className='flex flex-row items-center gap-1 mb-1'>
-                            <h2 className="text-2xl font-semibold text-gray-800 ">Dr. {doctor.name}  </h2>
+                            <h2 className="text-xl md:text-2xl font-semibold text-gray-800 ">Dr. {doctor.name}  </h2>
                             <img src={verified} className='w-[20px]' />
                         </div>
-                        <p className=" text-gray-600 mb-1">{doctor.speciality}</p>
+                        <p className="text-sm md:text-base text-gray-600 mb-1">{doctor.speciality}</p>
                         <div className="w-full mb-4">
                             {
                                 doctor.available ?
                                     <div className='flex flex-row  items-center gap-2'>
-                                        <div className='w-[20px] h-[20px] rounded-full bg-[#a5ffa5] flex flex-row justify-center items-center'>
-                                            <div className='w-[10px] h-[10px] rounded-full bg-[#2ec92e]'>
+                                        <div className='w-[15px] h-[15px] md:w-[20px] md:h-[20px] rounded-full bg-[#a5ffa5] flex flex-row justify-center items-center'>
+                                            <div className='w-[7px] h-[7px] md:w-[10px] md:h-[10px] rounded-full bg-[#2ec92e]'>
                                             </div>
                                         </div>
-                                        <p className='text-lg font-semibold text-[green]'>Available</p>
+                                        <p className='text-sm md:text-lg font-semibold text-[green]'>Available</p>
                                     </div>
                                     :
                                     <div className='flex flex-row  items-center gap-2'>
-                                        <div className='w-[20px] h-[20px] rounded-full bg-[#ffa5a5] flex flex-row justify-center items-center'>
-                                            <div className='w-[10px] h-[10px] rounded-full bg-[#dd4444]'>
+                                        <div className='w-[15px] h-[15px] md:w-[20px] md:h-[20px] rounded-full bg-[#ffa5a5] flex flex-row justify-center items-center'>
+                                            <div className='w-[7px] h-[7px] md:w-[10px] md:h-[10px] rounded-full bg-[#dd4444]'>
                                             </div>
                                         </div>
                                         <p className='text-lg font-semibold text-[red]'>Unavailable</p>

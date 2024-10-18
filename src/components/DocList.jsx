@@ -46,6 +46,7 @@ function DocList({
           <DoctorProfile
             doctorList={filteredDoctorList}
             isHomePage={isHomePage}
+            isMobile={isMobile}
           />
           {
             isHomePage ?
