@@ -5,6 +5,8 @@ import create from '../assets/images/create.png'
 import login from '../assets/images/login.png'
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import emergency from '../assets/images/emergency.png'
+import emergencyBlack from '../assets/images/emergencyBlack.png'
 
 function Navbar() {
   let { isAuthenticated } = useSelector(state => state.user);
@@ -45,18 +47,27 @@ function Navbar() {
             }>
             About
           </NavLink>
+          {
+            !isAuthenticated ?
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? activeLink : inactiveLink
+                }>
+                Contact
+              </NavLink>
+              :
+              null
+          }
 
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? activeLink : inactiveLink
-            }>
-            Contact
-          </NavLink>
         </ul>
         {
           isAuthenticated ?
-            <div>
+            <div className='flex flex-row gap-3'>
+              <NavLink to='/emergency' className="p-2 bg-softGray rounded-2xl px-4 lg:px-5 lg:py-3 text-black shadow-md shadow-darkGray font-semibold  flex flex-row gap-2 items-center hover:bg-[#f3e5e5]">
+                Emergency
+                <img src={emergency} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />
+              </NavLink>
               <NavLink to='/profile' className="p-2 bg-primary rounded-2xl px-4 lg:px-5 lg:py-3 text-white font-semibold  flex flex-row gap-2 items-center hover:bg-[#28479c]">
                 Profile
                 <img src={user} className='md:h-[25px] lg:w-[30px] lg:h-[30px]' />

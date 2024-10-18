@@ -10,6 +10,7 @@ import Profile from "./pages/Profile"
 import EditProfile from "./pages/EditProfile"
 import LoadDoctor from "./pages/LoadDoctor"
 import AllAppointments from "./pages/AllAppointments"
+import Emergency from "./pages/Emergency"
 
 function App() {
 
@@ -57,6 +58,10 @@ function App() {
         {
           path:'allAppointments',
           element: <AllAppointments />
+        },
+        {
+          path:'emergency',
+          element: <Emergency />
         }
       ]
     }
