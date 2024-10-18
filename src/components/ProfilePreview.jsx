@@ -25,7 +25,7 @@ function ProfilePreview({
     return (
         <div className='flex flex-col md:flex-row gap-7 items-start'>
             <div className='p-1 border-[3px] md:border-4 border-primary rounded-full relative'>
-                <div className='w-[120px] md:w-[150px] h-[120px] md:h-[150px] flex flex-col rounded-full overflow-hidden items-center justify-center'>
+                <div className='w-[110px] md:w-[150px] h-[110px] md:h-[150px] flex flex-col rounded-full overflow-hidden items-center justify-center'>
                     {
                         isLocalImage ?
                             <img
@@ -73,7 +73,7 @@ function ProfilePreview({
             <div className='flex flex-col items-start gap-3'>
                 {
                     !degree ?
-                        <h1 className='text-[22px] md:text-[33px] font-semibold flex flex-row gap-2'>
+                        <h1 className='text-[20px] md:text-[33px] font-semibold flex flex-row gap-2'>
                             Welcome,
                             <span className='text-primary font-bold'>
                                 {name}
