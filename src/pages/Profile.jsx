@@ -134,7 +134,7 @@ function Profile() {
                 <hr className='w-[95%] border-none h-[2px] bg-darkGray mt-5' />
                 <h2 className='text-xl md:text-2xl font-semibold mt-5'>Your Appointments</h2>
 
-                <div className='mt-6 w-[95%] flex flex-row gap-8 items-center'>
+                <div className='mt-6 w-[95%] flex flex-col md:flex-row gap-8 items-center'>
                     {
                         loadingBookings ? <IncomponentLoading /> :
                             <>

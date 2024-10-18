@@ -24,7 +24,7 @@ const PreviousAppointmentList = ({ page = 'bookings' }) => {
     }
 
     return (
-        <div className='w-1/2 flex flex-row gap-6 mt-6 h-full'>
+        <div className='md:w-1/2 w-full flex flex-row gap-6 mt-6 h-full'>
             <div className='p-3 w-full h-full flex flex-col items-center bg-secondary py-6 rounded-xl shadow-md shadow-darkGray gap-3 '>
                 <h3 className='text-xl font-semibold text-textp flex flex-row items-center gap-2 mb-6'>
                     <Book className='w-[22px] h-[22px]' />
