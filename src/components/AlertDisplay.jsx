@@ -46,8 +46,8 @@ function AlertDisplay({
 
     if (error) {
         return (
-            <div className='w-screen h-screen fixed z-20 inset-0 bg-white flex flex-col items-center justify-center gap-5'>
-                <h1 className='text-4xl font-extrabold text-textp flex flex-row gap-2'>
+            <div className='w-screen h-screen fixed z-40 inset-0 bg-white flex flex-col items-center justify-center gap-5'>
+                <h1 className='text-xl md:text-4xl font-extrabold text-textp flex flex-row gap-2'>
                     Sorry <span className='text-[#ec174d]'> Error </span>  from the Server  Side !!!!
                 </h1>
                 <video
@@ -60,14 +60,14 @@ function AlertDisplay({
                     Your browser does not support the video tag.
                 </video>
                 <div className='flex flex-row gap-1 items-center'>
-                    <img src={warning} className='w-[25px] h-[25px]' />
-                    <p className='text-textp'>Try again after sometime</p>
+                    <img src={warning} className='w-[15px] h-[15px] md:w-[25px] md:h-[25px]' />
+                    <p className='text-textp text-sm md:text-base '>Try again after sometime</p>
                 </div>
             </div>
         )
     }
     return (
-        <div className='p-3  flex flex-row justify-center fixed z-30'>
+        <div className='p-3  flex flex-row justify-center fixed z-40'>
             {
                 alertIndicator === "success" ?
                     <div className='min-w-[250px] flex flex-col max-w-[350px] relative '>
@@ -81,13 +81,13 @@ function AlertDisplay({
                                         muted
                                         loop
                                         playsInline
-                                        style={{ width: '35px' }}>
+                                        style={{ width: '30px' }}>
                                         <source src={success} type="video/webm" />
                                         Your browser does not support the video tag.
                                     </video>
-                                    <strong className='font-bold'>Success!</strong>
+                                    <strong className='text-lg font-bold'>Success!</strong>
                                 </div>
-                                <span className='block text-lg sm:inline'>{alertMessage}</span>
+                                <span className='block text-sm md:text-lg sm:inline'>{alertMessage}</span>
                             </div>
                             <button onClick={(e) => {
                                 setAlertIndicator('');
@@ -103,7 +103,7 @@ function AlertDisplay({
             }
             {
                 alertIndicator === "warning" ?
-                    <div className='min-w-[250px] flex flex-col max-w-[350px] relative '>
+                    <div className=' md:min-w-[250px] flex flex-col max-w-[350px] relative '>
                         <div className={`${alertStyle} bg-yellow-100 border-yellow-400 text-yellow-700`} role='alert'>
                             <div className={`${style} bg-yellow-400`}></div>
                             <div className='px-4 py-3 flex flex-col'>
@@ -114,13 +114,13 @@ function AlertDisplay({
                                         muted
                                         loop
                                         playsInline
-                                        style={{ width: '30px' }}>
+                                        style={{ width: '25px' }}>
                                         <source src={warningAnime} type="video/webm" />
                                         Your browser does not support the video tag.
                                     </video>
-                                    <strong className='font-bold'>Warning!</strong>
+                                    <strong className='text-lg font-bold'>Warning!</strong>
                                 </div>
-                                <span className='block text-lg sm:inline'>{alertMessage}</span>
+                                <span className='block text-sm md:text-lg sm:inline'>{alertMessage}</span>
                             </div>
                             <button onClick={(e) => {
                                 setAlertIndicator('');
@@ -147,13 +147,13 @@ function AlertDisplay({
                                         muted
                                         loop
                                         playsInline
-                                        style={{ width: '35px' }}>
+                                        style={{ width: '30px' }}>
                                         <source src={serverError} type="video/webm" />
                                         Your browser does not support the video tag.
                                     </video>
-                                    <strong className='font-bold'>Error!</strong>
+                                    <strong className='text-lg font-bold'>Error!</strong>
                                 </div>
-                                <span className='block text-lg sm:inline'>{alertMessage}</span>
+                                <span className='block text-sm md:text-lg sm:inline'>{alertMessage}</span>
                             </div>
                             <button onClick={(e) => {
                                 setAlertIndicator('');

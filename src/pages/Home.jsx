@@ -27,7 +27,7 @@ function Home() {
         {
           showChatBot ?
             null :
-            <p className="absolute bottom-full mb-2 text-textp right-0 bg-white p-4 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out w-[350px] gap-1 inline-block">
+            <p className="text-sm md:text-base absolute bottom-full mb-2 text-textp right-0 bg-white p-4 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out w-[320px] md:w-[350px] gap-1 inline-block">
               👋 Hi there! I'm <span className='text-primary font-semibold'>DocCures' AI assistant</span>, Need help booking a doctor? ready to help!
             </p>
         }
