@@ -99,10 +99,10 @@ function Emergency() {
 
 
     const searchEmergencyDoctors = () => {
-        if (windowWidth < 768) {
+        socket.emit('searchEmergencyDoctors');
+        if (windowWidth < 768 && availableDoctors.length > 0) {
             setShow(false);
         }
-        socket.emit('searchEmergencyDoctors');
     };
 
     const sendEmergencyRequest = () => {
@@ -162,13 +162,13 @@ function Emergency() {
             {
                 <AlertDisplay alertMessage="Please don't press back or refresh the page while conversation is going on! Chances of permanent connection loss" alertType='warning' />
             }
-            <div className=' mt-16 w-full h-full bg-white rounded-3xl flex flex-row relative overflow-hidden shadow-md shadow-darkGray justify-around items-center'>
+            <div className=' mt-16 w-full h-full bg-white rounded-3xl flex flex-col relative overflow-hidden shadow-md shadow-darkGray justify-around items-center'>
                 <img src={room} className='absolute w-full h-full object-cover rounded-3xl opacity-55' />
 
                 {
                     !emergencyRoom ? <>
                         {
-                            show &&
+                            show && !availableDoctors.length > 0 &&
                             <div className=' z-10 md:w-[60%] lg:w-auto h-full bg-transparent p-4 rounded-3xl flex flex-row items-center overflow-scroll no-scrollbar '>
                                 <div className='bg-[#f6faff] rounded-3xl w-full h-full flex flex-col items-center justify-between p-4 sm:p-6 shadow-lg shadow-[gray] overflow-y-auto no-scrollbar'>
                                     <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 sm:mt-5 text-center'>
@@ -315,7 +315,7 @@ function Emergency() {
                 }
                 {notificationPermission !== 'granted' && (
                     <button
-                        className="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4 hover:bg-blue-600 transition-colors duration-200 mt-10"
+                        className="bg-blue-500 z-10 text-white px-4 py-2 rounded-lg mb-4 hover:bg-blue-600 transition-colors duration-200 mt-10"
                         onClick={requestNotificationPermission}
                     >
                         Enable Notifications

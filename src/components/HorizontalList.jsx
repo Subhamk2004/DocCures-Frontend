@@ -12,31 +12,31 @@ function HorizontalList() {
             <Link to="/allDoctors/genralDoc">
                 <button className='flex flex-col items-center'>
                     <img src={General} className='w-[80px] lg:w-[100px]' />
-                    <p className='text-sm lg:text-lg'>General physician</p>
+                    <p className='text-textp whitespace-nowrap text-sm lg:text-lg'>General physician</p>
                 </button>
             </Link>
             <Link to="/allDoctors/Gynecologist">
                 <button className='flex flex-col items-center'>
                     <img src={Gynecologist} className='w-[80px] lg:w-[100px]' />
-                    <p className='text-sm lg:text-lg'>Gynecologist</p>
+                    <p className='text-textp text-sm lg:text-lg'>Gynecologist</p>
                 </button>
             </Link>
             <Link to="/allDoctors/Dermatologist">
                 <button className='flex flex-col items-center'>
                     <img src={skin} className='w-[80px] lg:w-[100px]' />
-                    <p className='text-sm lg:text-lg'>Dermatologist</p>
+                    <p className='text-textp text-sm lg:text-lg'>Dermatologist</p>
                 </button>
             </Link>
             <Link to="/allDoctors/Pediatricians">
                 <button className='flex flex-col items-center'>
                     <img src={Pediatricians} className='w-[80px] lg:w-[100px]' />
-                    <p className='text-sm lg:text-lg'>Pediatricians</p>
+                    <p className='text-textp text-sm lg:text-lg'>Pediatricians</p>
                 </button>
             </Link>
             <Link to="/allDoctors/Neurologist">
                 <button className='flex flex-col items-center'>
                     <img src={Neurologist} className='w-[80px] lg:w-[100px]' />
-                    <p className='text-sm lg:text-lg'>Neurologist</p>
+                    <p className='text-textp whitespace-nowrap text-sm lg:text-lg'>Neurologist</p>
                 </button>
             </Link>
         </div>

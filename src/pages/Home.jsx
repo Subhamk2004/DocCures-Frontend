@@ -6,10 +6,15 @@ import { Link } from 'react-router-dom'
 import doc1C from '../assets/images/doc1.png'
 import DocCuresAI from '../components/DocCuresAI'
 import Ai from '../assets/images/Ai.png'
+import { useSelector } from 'react-redux'
+import AlertDisplay from '../components/AlertDisplay'
 
 function Home() {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  let { isAuthenticated } = useSelector(state => state.user);
+  let [showChatBot, setShowChatBot] = useState(false);
+  let [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -18,10 +23,26 @@ function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  let [showChatBot, setShowChatBot] = useState(false);
+
+  let handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText('https://doc-cures-user.vercel.app/')
+      setIsCopied(true)
+      setTimeout(() => {
+        setIsCopied(false)
+      }, 7000)
+    } catch (error) {
+      console.error('Failed to copy text: ', err);
+    }
+  }
+
+
   return (
     <div className='w-full h-full p-2 md:p-4 flex flex-col items-center overflow-scroll relative'>
       <HomeIntro windowWidth={windowWidth} />
+      {
+        isCopied && <AlertDisplay alertType='success' alertMessage='Link copied to clipboard' />
+      }
 
       <div className="z-10 fixed right-3 bottom-12 md:right-12 shadow-lg shadow-[gray] rounded-full group cursor-pointer flex justify-center items-center">
         {
@@ -39,7 +60,7 @@ function Home() {
       </div>
       {
         showChatBot &&
-        <div className="fixed bottom-32 h-[550px] right-[15px] md:right-10 w-[330px] md:w-[380px] lg:w-[500px] md:h-[600px] lg:h-[750px] bg-white shadow-lg shadow-[gray] rounded-3xl overflow-hidden z-20">
+        <div className="fixed bottom-32 h-[600px] right-[15px] md:right-10 w-[330px] md:w-[380px] lg:w-[500px] md:h-[600px] lg:h-[750px] bg-white shadow-lg shadow-[gray] rounded-3xl overflow-hidden z-20">
           <DocCuresAI />
         </div>
       }
@@ -73,11 +94,22 @@ function Home() {
             Book Appointment with 100+ Trusted Doctors
           </span>
 
-          <Link to="/signup">
-            <button className='text-sm w-[145px] md:text-base md:w-auto  rounded-3xl px-6 py-3 bg-softGray hover:bg-white text-textp hover:text-black lg:text-xl lg:font-semibold'>
-              Create Account
-            </button>
-          </Link>
+          {
+            isAuthenticated ?
+              <button className='text-sm w-[145px] md:text-base md:w-auto  rounded-3xl px-6 py-3 bg-softGray hover:bg-white text-textp hover:text-black lg:text-xl lg:font-semibold'
+                onClick={handleCopy}
+              >
+                Spread Health
+              </button>
+              :
+              <Link to="/signup">
+                <button className='text-sm w-[145px] md:text-base md:w-auto  rounded-3xl px-6 py-3 bg-softGray hover:bg-white text-textp hover:text-black lg:text-xl lg:font-semibold'>
+                  Create Account
+                </button>
+              </Link>
+          }
+
+
         </div>
 
         <div className='w-[40%] lg:w-[45%] h-[100%] flex items-end overflow-hidden rounded-3xl'>
