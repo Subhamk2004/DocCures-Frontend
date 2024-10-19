@@ -7,7 +7,11 @@ import { AlertTriangle, Clock, DollarSign, Send, ShieldAlert, Star, TimerReset, 
 
 const serverUrl = import.meta.env.VITE_DOCCURES_SERVER_URL;
 
-const socket = io(serverUrl, { withCredentials: true });
+const socket = io(serverUrl, {
+    withCredentials: true,
+    transports: ['websocket', 'polling'],
+    path: '/socket.io/'
+});
 
 function Emergency() {
     let { authData } = useAuth();
