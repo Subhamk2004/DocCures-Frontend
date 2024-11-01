@@ -60,7 +60,7 @@ function Home() {
       </div>
       {
         showChatBot &&
-        <div className="fixed bottom-32 h-[600px] right-[15px] md:right-10 w-[330px] md:w-[380px] lg:w-[500px] md:h-[600px] lg:h-[750px] bg-white shadow-lg shadow-[gray] rounded-3xl overflow-hidden z-20">
+        <div className="fixed bottom-32 h-[600px] right-[15px] md:right-10 w-[330px] md:w-[380px] lg:w-[500px] md:h-[600px] lg:h-[600px] bg-white shadow-lg shadow-[gray] rounded-3xl overflow-hidden z-20">
           <DocCuresAI />
         </div>
       }
