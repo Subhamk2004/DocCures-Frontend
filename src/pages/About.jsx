@@ -25,46 +25,7 @@ function About() {
           <img src={AboutImg} className=' w-full' />
         </div>
       </div>
-      <div className='w-full mt-10 flex flex-col'>
-        <h2 className='text-center font-bold text-black text-2xl mb-5'>
-          Meet the <span className='text-primary'>Developer</span>
-        </h2>
-        <div className='w-full flex flex-row gap-6 items-center text-textp'>
-          <div className='w-auto '>
-            <div className='rounded-full border-primary border-[3px] h-[175px] w-[175px] flex justify-center items-center overflow-hidden '>
-              <div className='rounded-full  overflow-hidden h-[160px] w-[160px]'>
-                <img src={Developer} className='object-cover h-[190px] -ml-2 ' />
-              </div>
-            </div>
-          </div>
-          <div className='w-[60%]'>
-            <p className='text-[16px] md:text-base'>
-              Hi! I am Subham Kumar a full-stack developer with experience in building web applications. I am passionate about creating user-friendly applications that solve real-world problems.
-            </p>
-          </div>
-        </div>
-        <p className='text-textp mt-5 text-[16px] md:text-base'>
-          I am skilled in JavaScript, React.js, React Native, Next.js, Node.js, Express, MongoDB, and more. I am excited to work on projects that challenge me and help me grow as a developer.
-        </p>
-        <p className='mt-20 text-center text-textp'>
-          Follow me on below platforms to stay updated with my work.
-        </p>
-        <div className=' mt-5 flex w-full flex-row justify-evenly
-        '>
-          <button className=' bg-black rounded-xl overflow-hidden flex flex-row'>
-            <a href='https://github.com/Subhamk2004' target='_blank' className='text-white bg-black flex flex-row items-center p-3 px-5 gap-2'>
-              <img src={github} alt="Github" className='h-[30px] z-10 ' />
-              <p className='text-xl'>Github</p>
-            </a>
-          </button>
-          <button className='bg-[#007ab9] border-2 rounded-xl overflow-hidden flex flex-row'>
-            <a href='https://www.linkedin.com/in/subham-kumar-73b98b252/'  target='_blank'  className='text-white bg-white flex flex-row items-center p-3 px-5 gap-2'>
-              <img src={linkedin} alt="in" className='h-[30px] z-10 ' />
-              <p className='text-xl text-[#007ab9] font-bold'>LinkedIn</p>
-            </a>
-          </button>
-        </div>
-      </div>
+      
     </div>
   )
 }
