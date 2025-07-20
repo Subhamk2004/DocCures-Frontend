@@ -29,8 +29,8 @@ function Footer() {
           </h2>
           <ul className='flex flex-col text-textp md:mt-20'>
             <Link>+0 1234567890</Link>
-            <Link>subhamrahar22@gmail.com</Link>
-            <Link>@Subhamk2004 -Github</Link>
+            <Link>ayushhdhanush@gmail.com</Link>
+            <Link>@Argus-66 -Github</Link>
           </ul>
         </div>
 

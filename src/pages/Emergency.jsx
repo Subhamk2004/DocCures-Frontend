@@ -10,9 +10,9 @@ const serverUrl = import.meta.env.VITE_DOCCURES_SERVER_URL;
 const socket = io(serverUrl, {
     withCredentials: true,
     transports: ['websocket', 'polling'],
-    path: '/socket.io/'
+    path: '/socket.io/' 
 });
-
+ 
 function Emergency() {
     let { authData } = useAuth();
     let userId = authData?.user?.id;

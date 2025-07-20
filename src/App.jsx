@@ -11,6 +11,7 @@ import EditProfile from "./pages/EditProfile"
 import LoadDoctor from "./pages/LoadDoctor"
 import AllAppointments from "./pages/AllAppointments"
 import Emergency from "./pages/Emergency"
+import Contact from "./pages/Contact"
 
 function App() {
 
@@ -26,6 +27,10 @@ function App() {
         {
           path: 'about',
           element: <About />
+        },
+        {
+          path: 'contact',
+          element: <Contact />
         },
         {
           path: 'allDoctors',
@@ -56,11 +61,11 @@ function App() {
           element: <LoadDoctor />
         },
         {
-          path:'allAppointments',
+          path: 'allAppointments',
           element: <AllAppointments />
         },
         {
-          path:'emergency',
+          path: 'emergency',
           element: <Emergency />
         }
       ]
